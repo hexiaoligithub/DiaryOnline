@@ -1,0 +1,86 @@
+.page-title {
+    font-size: 25px;
+}
+
+.page-nav {
+    padding:10px;
+    background-color:#ccc;
+    margin-bottom:30px;
+}
+.nav-username,
+.nav-register,
+.nat-login {
+    margin:0 10px;
+}
+
+/*δ�����������*/
+.link { color: #fdfefc; text-decoration: none}
+/*�ѵ����������*/
+.visited { color: #f6f7ff; text-decoration: none}
+/*���ͣ�������������*/
+.hover { color: #fffff9; text-decoration: underline}
+
+.labelerr{
+    color: #ff626e;
+    font-size: 18px;
+    font-family:"楷体";
+}
+
+.contentFont{
+    font-family:"微软雅黑";
+}
+
+.bigButton{
+    height: 65px;
+}
+
+.table-title {
+    font-size: 20px;
+}
+
+.table-content {
+    font-size: 16px;
+}
+.td{border:solid #add9c0; border-width:0px 1px 1px 0px; padding:10px 0px;}
+.table{border:solid #add9c0; border-width:1px 0px 0px 1px;}
+
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+.demo{
+    padding: 25px;
+    background-color: rgba(0,0,0,0.5);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+}
+.demo p{
+    color: #FFFFFF;
+}
+.demo h1{
+    color: #FFFFFF;
+}
+.demo h2{
+    color: #FFFFFF;
+}
+.demo td{
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.demo span{
+    color: #FFFFFF;
+}
+
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+    .demo{
+        background-color:#000000;
+        filter:Alpha(opacity=50);
+        position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+        *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+    }
+    .demo p{
+        position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+    }
+}

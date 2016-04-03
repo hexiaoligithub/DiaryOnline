@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset = UTF-8">
+		<title><%= title %></title>
+		<link rel = "stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/common.css">
+		<link href="/css/style.default.css" rel="stylesheet">
+		<link href="/css/jquery.gritter.css" rel="stylesheet">
+
+		<!-- Google Webfonts -->
+		<link href='http://fonts.useso.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+		<!-- Animate.css -->
+		<link rel="stylesheet" href="/css/animate.css">
+		<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="/css/icomoon.css">
+		<!-- Owl Carousel -->
+		<link rel="stylesheet" href="/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="/css/magnific-popup.css">
+		<!-- Theme Style -->
+		<link rel="stylesheet" href="/css/style.css">
+		<!-- Modernizr JS -->
+		<script src="js/modernizr-2.6.2.min.js"></script>
+
+	</head>
+	<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" style="background: url(/images/background.jpg); background-size: 100%">
+	<header>
+		<div class="headerwrapper">
+			<% if(user){ %>
+			<div class="header-left">
+				<div class="media profile-left row">
+					<div class="col-sm-6">
+						<a class="pull-left profile-thumb" href="/home">
+							<img class="img-circle" src="/images/photos/touxiang.jpg" alt="">
+						</a>
+					</div>
+					<div class="col-sm-6">
+					<div>
+						<h3 ><%= user.username %></h3>
+						<h3>欢迎您</h3>
+					</div>
+						</div>
+				</div>
+			</div><!-- header-left -->
+			<div class="header-right">
+
+				<div class="pull-left" style="margin-top: 25px">
+					<div class="btn-group btn-group-notification">
+						<button type="button" class="btn btn-default btn-block btn-lg" style="width: 130px;height: 65px">
+							<i class="fa fa-pencil-square-o"></i>
+							<a class="link" href="/post"><span>发表</span></a>
+						</button>
+					</div>
+				</div>
+
+				<div class="pull-right">
+					<div class="btn-group btn-group-notification">
+						<button type="button" class="btn btn-default btn-block btn-lg ">
+							<i class="glyphicon glyphicon-log-out"></i>
+							<a class="link" href="/quit"><span>退出</span></a>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<% } else{ %>
+			<div class="header-left">
+				<div class="media profile-left">
+					<a class="pull-left profile-thumb" >
+						<img src="images/diary.png" alt="">
+					</a>
+					</div>
+			</div>
+			<div class="header-right">
+				<div class="pull-right">
+
+					<div class="btn-group btn-group-notification">
+						<button type="button" class="btn btn-default btn-block btn-lg">
+							<i class="fa fa-paper-plane"></i>
+							<a class="link" href="/login"><span>登录</span></a>
+						</button>
+					</div>
+
+					<div class="btn-group btn-group-option" style="padding-left: 10px">
+						<button type="button" class="btn btn-default btn-block btn-lg">
+							<i class="fa fa-bars"></i>
+							<a class="link" href="/register">注册</a>
+						</button>
+					</div>
+				</div><!-- pull-right -->
+
+			</div><!-- header-right -->
+			<% } %>
+	</div>
+	</header>
+
+
+
+

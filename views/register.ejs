@@ -1,0 +1,118 @@
+﻿<%- include header %>
+<script>
+	/**
+	 * 判断用户名输入是否合法
+	 * @returns {boolean}
+	 */
+	function checkName()
+	{
+		var username = $("#username");
+		var errlabel = document.getElementById("usernameTip");
+		var usern = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){3,20}$/;
+		if (!usern.test(username.val())) {
+			errlabel.style.display="block";
+			username.value = '';
+			username.focus();
+			return false;
+		}
+		else{
+			//errlabel.style.display="none";
+			usernameValidate();
+			return true;
+		}
+	}
+
+	/**
+	 * 检查密码输入是否合法
+	 * @returns {boolean}
+	 */
+	function checkpassword(){
+		var password = $("#password");
+		var passwordTip = document.getElementById("passwordTip");
+		var template = /^[a-zA-Z0-9]{6,20}$/;
+		if (!template.test(password.val())) {
+			passwordTip.style.display="block";
+			password.value = '';
+			password.focus();
+			return false;
+		}
+		else{
+			passwordTip.style.display="none";
+
+			return true;
+		}
+	}
+
+	/**
+	 * 检验密码输入是否一致
+	 * @returns {boolean}
+	 */
+	function checkpasswordRep(){
+		var password = $("#password");
+		var passwordRep = $("#passwordRepeat");
+		var passwordRepTip = document.getElementById("passwordRepTip");
+		if((password.val())!=(passwordRep.val()))
+		{
+			passwordRepTip.innerHTML="两次密码输入不一致";
+			passwordRepTip.style.display="block";
+			passwordRep.focus();
+			return false;
+		}
+		else{
+			passwordRepTip.style.display="none";
+			return true;
+		}
+	}
+
+	/**
+	 * 注册时判断用户是否存在
+	 */
+	function usernameValidate()
+	{
+		var username = $("#username");
+		//var password = $("#password");
+		var usernameTip = document.getElementById("usernameTip");
+		$.getJSON("usernameValidate",{username:username.val()}, function(data){
+			if(data.status)
+			{
+				usernameTip.innerHTML = "该用户名已经存在";
+				username.focus();
+				usernameTip.style.display = "block";
+				//alert("用户名或者密码有误");
+			}
+			else{
+				usernameTip.style.display = "none";
+				//alert("用户名正确");
+			}
+
+		});
+	}
+
+</script>
+<div class="contentpanel demo" style="padding-top: 8%; padding-left: 32%;padding-right: 38% ;height: 1000px">
+	<h1 class="text-center page-title fh5co-lead" style="margin-bottom: 30px">新用户注册</h1>
+			<div class="container">
+				<div class="row">
+					<div class ="col-lg-6">
+						<form method = "post">
+							<div class="form-group">
+								<input type="text" onblur="checkName();" class="form-control" id="username" name="username" placeholder="用户名">
+								<em><label class="labelerr" id="usernameTip" hidden>只能是字母、数字、下划线的组合，长度3-20个字符</label></em>
+							</div>
+							<div class="form-group">
+								<input type="password" onblur="checkpassword();" class="form-control" id="password" name="password" placeholder="密码">
+								<em><label class="labelerr" id="passwordTip" hidden>长度不能少于6，必须同时包含数字、小写字母、大写字母</label></em>
+							</div>
+							<div class="form-group">
+								<input type="password" onblur="checkpasswordRep();" class="form-control" id="passwordRepeat" name="passwordRepeat" placeholder="确认密码">
+								<em><label class="labelerr" id="passwordRepTip" hidden>两次密码输入不一致</label></em>
+							</div>
+							<button class="btn btn-primary  btn-block contentFont btn-lg" type ="submit" onclick="checkName();">注册</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+</div>
+
+<%- include footer %>
