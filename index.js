@@ -56,46 +56,13 @@ app.use(session({
     saveUninitialized: true
 }));
 
-//app.use('port', process.env.port || 3000);
-//app.use(passort.initialize);
-//app.use(passort.session());
-
-//passport.use('local', new LocalStrategy(
-//    function (username, password, done) {
-//        if (username !== user.username) {
-//            return done(null, false, { message: '用户名不存在' });
-//        }
-//        if (password !== user.password) {
-//            return done(null, false, { message: '用户名或者密码有误' });
-//        }
-//        return done(null, user);
-//    }
-//));
-
-//passport.serializeUser(function (user, done) {//保存user对象
-//    done(null, user);//可以通过数据库方式操作
-//});
-//
-//passport.deserializeUser(function (user, done) {//删除user对象
-//    done(null, user);//可以通过数据库方式操作
-//});
-
-
 //app.get('/',checkLogin.noLogin);
 app.get('/', function (req, res) {
-    //Note.find({author:req.session.user.username})
-    //    .exec(function(err,allNotes){
-    //        if(err)
-    //        {
-    //            console.log(err);
-    //            return res.redirect('/');
-    //        }
             res.render('index', {
                 user:req.session.user,
                 title: '首页',
                 //notes:allNotes
             });
-        //});
 });
 
 app.get('/',checkLogin.noLogin);
@@ -297,6 +264,7 @@ app.get('/login', function (req, res) {
         title: '登录'
     });
 });
+
 app.post('/login', function (req, res) {
     var username = req.body.username.toString().trim(),
         password = req.body.password.toString().trim();
@@ -389,6 +357,34 @@ app.get('/test', function (req, res) {
         title: '测试'
     });
 
+});
+
+app.get('/contact', function (req, res) {
+    console.log('联系我们！');
+    res.render('contact', {
+        user:req.session.user,
+        title: '联系方式'
+    });
+
+});
+
+app.get('/profile/:username', function (req, res) {
+    console.log(req.session.user);
+    Note.find({author:req.params.username})
+        .exec(function(err,allNotes){
+            if(err)
+            {
+                console.log(err);
+                return res.redirect('/');
+            }
+            res.render('profile', {
+                user:req.session.user,
+                title: '个人信息',
+                notes:allNotes,
+                count:allNotes.length,
+                moment:moment
+            });
+        });
 });
 
 /**

@@ -1,42 +1,52 @@
-<%- include header %>
+<%- include aceHeader %>
 
-<div class="contentpanel demo" style="padding-top: 8%; padding-left: 20%;padding-right: 10%;height: 1000px">
-            <div class="container">
-                <div class="row">
-                    <div class="text-center">
-                        <form>
-                            <div class="form-group text-center">
-                                <h1 ><%= art.title%></h1>
-                            </div>
-                            <div class="form-group text-center">
-                                <h2 class="label label-info"><%= art.tag%></h2>
-                            </div>
-                            <div class="form-group text-center">
-                                <span class="text-bold">时间：</span>
-                                <span><%= moment(art.createTime).locale('zh-cn').format('LL HH:mm:ss')%></span>
-                            </div>
-                            <div class="form-group">
-                                <h2><%= art.content%></h2>
-                            </div>
-                            <div class="btn-list col-sm-12">
-                                <button type="button" class="btn btn-primary btn-rounded btn-lg">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                    <a class="link" href="/home"><span>返回</span></a>
-                                </button>
-                                <button type="button" class="btn btn-success btn-rounded btn-lg">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                    <a class="link" href="/update/<%= art._id%>"><span>修改</span></a>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-lg">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                    <a class="link" href="/delete/<%= art._id%>"><span>删除</span></a>
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="page-header">
+                <h1>
+                    日记详情
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        查看编辑日记详情
+                    </small>
+                </h1>
             </div>
-        </div>
+            <div class="text-center">
+                <form>
+                    <div class="form-group text-center">
+                        <h1 ><%= art.title%></h1>
+                    </div>
+                    <div class="form-group text-center">
+                        <h2 class="label label-info"><%= art.tag%></h2>
+                    </div>
+                    <div class="form-group text-center">
+                        <span class="text-bold">时间：</span>
+                        <span><%= moment(art.createTime).locale('zh-cn').format('LL HH:mm:ss')%></span>
+                    </div>
+                    <div class="form-group">
+                        <h2><%= art.content%></h2>
+                    </div>
+                    <div class="btn-list col-sm-12">
+                        <button type="button" class="btn btn-primary btn-rounded btn-lg">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <a class="link" href="/home"><span>返回</span></a>
+                        </button>
+                        <button type="button" class="btn btn-success btn-rounded btn-lg">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <a class="link" href="/update/<%= art._id%>"><span>修改</span></a>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-rounded btn-lg">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <a class="link" href="/delete/<%= art._id%>"><span>删除</span></a>
+                        </button>
+                    </div>
+                </form>
 
-<% include footer %>
+            </div>
+        </div><!-- /.page-content -->
+
+    <%- include aceFooter %>

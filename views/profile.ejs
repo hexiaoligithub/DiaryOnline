@@ -1,0 +1,188 @@
+<%- include aceHeader %>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <!-- /section:settings.box -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div class="page-header">
+                            <h1>
+                                个人信息页
+                                <small>
+                                    <i class="ace-icon fa fa-angle-double-right"></i>
+                                    用户详细信息
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="">
+                            <div id="user-profile-1" class="user-profile row">
+                                <div class="col-xs-12 col-sm-3 center">
+                                    <div>
+                                        <!-- #section:pages/profile.picture -->
+												<span class="profile-picture">
+													<img id="avatar" class="editable img-responsive editable-click editable-empty" alt="Alex's Avatar" src="../assets/avatars/profile.jpg"></img>
+												</span>
+
+                                        <!-- /section:pages/profile.picture -->
+                                        <div class="space-4"></div>
+
+                                        <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                            <div class="inline position-relative">
+                                                <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="ace-icon fa fa-circle light-green"></i>
+                                                    &nbsp;
+                                                    <span class="white"><%= user.username%></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-6"></div>
+
+                                    <!-- /section:pages/profile.contact -->
+                                    <div class="hr hr12 dotted"></div>
+
+                                    <!-- #section:custom/extra.grid -->
+                                    <div class="clearfix">
+                                        <div class="grid2">
+                                            <span class="bigger-175 blue"><%= count%></span>
+
+                                            <br>
+                                            发表总数
+                                        </div>
+
+                                        <div class="grid2">
+                                            <span class="bigger-175 blue">0</span>
+
+                                            <br>
+                                            今日发表
+                                        </div>
+                                    </div>
+
+                                    <!-- /section:custom/extra.grid -->
+                                    <div class="hr hr16 dotted"></div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-9">
+                                    <div class="space-12"></div>
+
+                                    <!-- #section:pages/profile.info -->
+                                    <div class="profile-user-info profile-user-info-striped">
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">用户名</div>
+
+                                            <div class="profile-info-value">
+                                                <span class="editable editable-click" id="username"><%= user.username%></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> 所在地 </div>
+
+                                            <div class="profile-info-value">
+                                                <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                                <span class="editable editable-click" id="country">中国</span>
+                                                <span class="editable editable-click" id="city">北京</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> 性别 </div>
+
+                                            <div class="profile-info-value">
+                                                <span class="editable editable-click" id="login">无</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">年龄</div>
+
+                                            <div class="profile-info-value">
+                                                <span class="editable editable-click" id="age">无</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">职业</div>
+
+                                            <div class="profile-info-value">
+                                                <span class="editable editable-click" id="age">无</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> 注册时间 </div>
+
+                                            <div class="profile-info-value">
+                                                <span class="editable editable-click" id="signup">2016</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> 关于我 </div>
+
+                                            <div class="profile-info-value">
+                                                <span class="editable editable-click" id="about">可编辑</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /section:pages/profile.info -->
+                                    <div class="space-20"></div>
+
+                                    <div class="widget-box transparent">
+                                        <div class="widget-header widget-header-small">
+                                            <h4 class="widget-title blue smaller">
+                                                <i class="ace-icon fa fa-rss orange"></i>
+                                                最近发表的文章
+                                            </h4>
+
+                                            <div class="widget-toolbar action-buttons">
+                                                <a href="#" data-action="reload">
+                                                    <i class="ace-icon fa fa-refresh blue"></i>
+                                                </a>
+                                                &nbsp;
+                                            </div>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main padding-8">
+                                                <!-- #section:pages/profile.feed -->
+                                                <div id="profile-feed-1" class="profile-feed ace-scroll" style="position: relative;"><div class="scroll-track scroll-active" style="display: block; height: 200px;"><div class="scroll-bar" style="height: 63px; top: 0px;"></div></div><div class="scroll-content" style="max-height: 200px;">
+                                                        <% notes.forEach(function(note){ %>
+                                                        <div class="profile-activity clearfix">
+                                                            <div>
+                                                                <img class="pull-left" alt="Alex Doe's avatar" src="../assets/avatars/avatar1.png">
+                                                                <a class="user" href="#"> <%= note.title %> </a>
+                                                                <a href="/detail/<%= note._id %>">查看详情</a>
+                                                                <h2 class="label label-info"><%= note.tag %></h2>
+                                                                <div class="time">
+                                                                    <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                    <%= moment(note.createTime).locale('zh-cn').format('LL HH:mm:ss') %>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="/update/<%= note._id %>" class="blue">
+                                                                    <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <% }); %>
+                                                        <!-- /section:pages/profile.feed -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr hr2 hr-double"></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+
+<%- include aceFooter %>

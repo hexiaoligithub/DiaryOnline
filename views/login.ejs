@@ -1,4 +1,23 @@
-﻿<%- include header %>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Chain Responsive Bootstrap3 Admin</title>
+
+	<link href="css/style.default.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body class="signin" style="font-size: 20px;">
 <script>
 	function checkName()
 	{
@@ -40,123 +59,69 @@
 	}
 </script>
 
-	<div class="contentpanel demo" style="padding-top: 10%; padding-left: 32%;padding-right: 38%;height: 1000px">
-			<h1 class="text-center page-title fh5co-lead" style="margin-bottom: 30px">用户登录</h1>
-			<div class="container">
-				<div class="row">
-					<div class ="col-lg-6">
-						<form method = "post" id="inforForm">
-							<div class="form-group">
-								<input type="text"  onblur="usernameValidate();" class="form-control required contentFont" id="用户名" name="username" placeholder="用户名" maxlength="20" minlength="3">
+<header>
+	<div style="background: #3c3c3c;margin-top: 80px">
+		<h1 class="fh5co-lead text-center" style="color: #f3faff;">多人在线笔记本</h1>
+	</div>
 
-								<em><label class="labelerr" id="usernameTip" hidden >该用户名不存在</label></em>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control required contentFont" name="password" placeholder="密码" minlength="6">
-								<label class="labelerr" id="usernameTip" style="display: none" >用户名或者密码有误</label>
-							</div>
-							<button class="btn btn-primary  btn-block contentFont btn-lg" type="submit">登录</button>
-						</form>
+</header>
+<section>
+
+	<div class="panel panel-signin" style="margin-top: 80px">
+		<div class="panel-body" style="margin-top: 10px;padding-top: 10px;">
+			<br />
+			<h2 class="text-center" style="margin-top: 0px;">登录页面</h2>
+			<p class="text-center">请输入账号密码登录</p>
+			<div class="mb30"></div>
+
+			<form method="post">
+				<div class="input-group mb15">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input type="text" class="form-control" placeholder="用户名" name="username" id="username" onblur="usernameValidate();">
+				</div><!-- input-group -->
+				<em><label class="labelerr" id="usernameTip" hidden style="color: #ee162d;font-size: 18px">该用户名不存在</label></em>
+				<div class="input-group mb15">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input type="password" name="password" class="form-control" placeholder="密码" id="password">
+					<label class="labelerr" id="usernameTip" style="display: none" style="color: #ee162d;font-size: 18px">用户名或者密码有误</label>
+				</div><!-- input-group -->
+
+				<div class="clearfix">
+					<div class="pull-left">
+						<div class="ckbox ckbox-primary mt10">
+							<input type="checkbox" id="rememberMe" value="1">
+							<label for="rememberMe">记住我</label>
+						</div>
+					</div>
+					<div class="pull-right">
+						<button class="btn btn-primary  btn-block contentFont btn-lg" type="submit">登录</button>
 					</div>
 				</div>
-			</div>
-		</div>
+			</form>
+
+		</div><!-- panel-body -->
+		<div class="panel-footer">
+			<a href="/register" class="btn btn-primary btn-block">还没有账号，立即注册？</a>
+		</div><!-- panel-footer -->
+	</div><!-- panel -->
+
+</section>
 
 
-<script>
-	(function() {
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/pace.min.js"></script>
+<script src="js/retina.min.js"></script>
+<script src="js/jquery.cookies.js"></script>
+
+<script src="js/custom.js"></script>
+
+</body>
+</html>
 
 
-		var username = $("#username").val().toString.trim();
-		alert(username);
-		//var usern = /^[a-zA-Z0-9_]{1,}$/;
-//		if (!username.match(usern)) {
-//			msg += "用户名只能由字母数字下划线组成\n";
-//			alert(msg);
-//			username.value = '';
-//			username.focus();
-//			return false;
-//		}
 
-		$.validator.setDefaults({
-			debug: true
-		})
 
-		var validator = $("#inforForm").validate({
-			rules: {//验证规则
-				username: {
-					required:true,
-					minlength:3,
-					maxlength:20
-				}
-				email: {
-					required: true,
-					email: true,
-//                            remote: {//远端验证
-//                                url: "check-email.php",
-//                                type: "post",
-//                                data: {
-//                                    username: function() {
-//                                        return $("#username").val();
-//                                    }
-//                                }
-//                            }
-				},
-				password: {
-					required: true,
-					minlength: 5
-				},
-				confirm_password: {
-					required: true,
-					minlength: 5,
-					equalTo: "#password"
-				}
-			},
-			messages: {//错误消息
-				username:{
-					required:"请输入姓名",
-					minlength: $.validator.format("密码不能小于{0}个字符"),
-					maxlength: $.validator.format("密码超过{0}个字符")
-				},
-				email: {
-					required: "请输入Email地址",
-					email: "请输入正确的email地址"
-				},
-				password: {
-					required: "请输入密码",
-					minlength: $.validator.format("密码不能小于{0}个字符")
-				},
-				confirm_password: {
-					required: "请输入确认密码",
-					minlength: "确认密码不能小于5个字符",
-					equalTo: "两次输入密码不一致不一致"
-				}
-			},
-//                    errorPlacement: function(error, element) {//显示错误消息的位置
-//                        if (element.is(":radio"))
-//                            error.appendTo(element.parent().next().next());
-//                        else if (element.is(":checkbox"))
-//                            error.appendTo(element.next());
-//                        else
-//                            error.appendTo(element.parent().next());
-//                    },
-//                    errorClass: "invalid", //错误消息框的类
-//                    errorElement: "a", //错误消息框的元素
-//                    errorContainer: "div.error", //当验证时显示或隐藏这个容器
-//                    errorLabelContainer: "#signupForm div.error",//当验证时显示或隐藏这个容器
-//                    wrapper: "li",//包裹住单条错误信息
-//                    success: function(label) {//验证成功后的操作
-//                        label.addClass("valid").text("Ok!")
-//                    },
-//                    onsubmit: false, //提交表单时验证
-//                    onfocusout: false, //失去焦点是验证
-//                    onkeyup: false,//这个好像不能用也许是我jquery版本太高了
-			submitHandler: function(form) {//处理程序
-				alert("submitted");
-				//form.submit();
-			}
-		});
-	})();
-	</script>
 
-<%- include footer %>

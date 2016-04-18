@@ -1,34 +1,50 @@
-<% include header %>
+<%- include aceHeader %>
 
-<div class="contentpanel demo" style="padding-top: 10%; padding-left: 20%;padding-right: 10%;height: 1000px">
-    <h1 class="text-center page-title fh5co-lead" style="margin-bottom: 30px">我的笔记列表</h1>
-        <div class="panel-body">
-            <div class = "container">
-                    <table class="table table-primary table-checkable table-bordered " id="tableList">
-                        <thead class="table-title ">
-                        <tr>
-                            <th>标题</th>
-                            <th>标签</th>
-                            <th>日期</th>
-
-                        </tr>
-                        </thead>
-                        <tbody class="table-content">
-                        <% notes.forEach(function(note){ %>
-                        <tr>
-                            <td class="td" style="width: 30%">
-                                <a href="/detail/<%= note._id %>"><%= note.title %></a>
-                            </td>
-                            <td class="td" style="width: 30%"><%= note.tag %></td>
-                            <td  class="td" style="width: 40%"><%= moment(note.createTime).locale('zh-cn').format('LL HH:mm:ss') %></td>
-                        </tr>
-                        <% }); %>
-                        </tbody>
-                    </table>
-                    <span id="spanFirst">第一页</span> <span id="spanPre">上一页</span> <span id="spanNext">下一页</span> <span id="spanLast">最后一页</span> 第<span id="spanPageNum"></span>页/共<span id="spanTotalPage"></span>页
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="page-header">
+                <h1>
+                    个人主页
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        发表日记列表
+                    </small>
+                </h1>
             </div>
-        </div>
-</div>
+            <table class="table table-primary table-checkable table-bordered " id="tableList">
+
+                <tbody class="table-content">
+                <% notes.forEach(function(note){ %>
+                <div class="profile-activity clearfix">
+                    <div>
+                        <img class="pull-left" alt="Alex Doe's avatar" src="../assets/avatars/avatar1.png">
+                        <a class="user" href="#"> <%= note.title %> </a>
+                        <a href="/detail/<%= note._id %>">查看详情</a>
+
+                        <h2 class="label label-info"><%= note.tag %></h2>
+                        <div class="time">
+                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                            <%= moment(note.createTime).locale('zh-cn').format('LL HH:mm:ss') %>
+                        </div>
+                    </div>
+
+                    <div class="tools action-buttons">
+                        <a href="/update/<%= note._id %>" class="blue">
+                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                        </a>
+                    </div>
+                </div>
+                <% }); %>
+                </tbody>
+            </table>
+            <span id="spanFirst">第一页</span> <span id="spanPre">上一页</span> <span id="spanNext">下一页</span> <span id="spanLast">最后一页</span> 第<span id="spanPageNum"></span>页/共<span id="spanTotalPage"></span>页
+
+        </div><!-- /.page-content -->
+
 
 <script>
 
@@ -157,4 +173,4 @@
     hide();
 </script>
 
-<% include footer %>
+<%- include aceFooter %>

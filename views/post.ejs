@@ -1,11 +1,27 @@
-﻿<% include header %>
+﻿<%- include aceHeader %>
 
-<div class="contentpanel demo" style="padding-top: 8%; padding-left: 15%;padding-right: 10%;height: 1000px">
-	<h1 class="text-center page-title fh5co-lead" style="margin-bottom: 30px">新增笔记</h1>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+	<!-- /section:settings.box -->
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+			<div class="page-header">
+				<h1>
+					日记发表
+					<small>
+						<i class="ace-icon fa fa-angle-double-right"></i>
+						编辑日记详情后发表
+					</small>
+				</h1>
+			</div>
 			<div class="container">
 				<div class="row">
 					<div class ="col-sx-4 col-sx-offset-4">
 						<form method = "post">
+							<div class="form-group text-center">
+								<h1 >日记发表</h1>
+							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="title" placeholder="标题">
 							</div>
@@ -37,6 +53,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div><!-- /.page-content -->
 
-<% include footer %>
+<%- include aceFooter %>
